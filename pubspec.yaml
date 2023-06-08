@@ -38,6 +38,21 @@ dependencies:
   http: ^0.13.3
   shared_preferences: ^2.1.1
   url_launcher: ^6.1.11
+  flutter_app_name: ^0.1.0
+  icons_launcher: ^2.0.4
+
+icons_launcher:
+  image_path: "assets/images/icon2.png"
+  platforms:
+    android:
+      enable: true
+      image_path: "assets/images/icon2.png"
+      adaptive_round_image: "assets/images/icon2.png"
+    ios:
+      enable: true
+
+flutter_app_name:
+  name: "Dapur Tiyer"
 
 dev_dependencies:
   flutter_test:

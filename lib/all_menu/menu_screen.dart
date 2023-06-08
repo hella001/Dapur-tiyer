@@ -9,10 +9,22 @@ class MenuScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Body(),
-      ),
+      appBar: buildAppBar(context),
+      body: Body(),
       bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.message),
+    );
+  }
+
+  AppBar buildAppBar(BuildContext context) {
+    return AppBar(
+      title: Column(
+        children: [
+          Text(
+            "Menu",
+            style: TextStyle(color: Colors.black),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -11,19 +11,6 @@ class body extends StatefulWidget {
 }
 
 class _bodyState extends State<body> {
-  whatsapp() async {
-    var contact = "+880123232333";
-    var androidUrl = "whatsapp://send?phone=$contact&text=Hi, I need some help";
-    var iosUrl =
-        "https://wa.me/$contact?text=${Uri.parse('Hi, I need some help')}";
-
-    try {
-      await launchUrl(Uri.parse(androidUrl));
-    } on Exception {
-      print('WhatsApp is not installed.');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -266,7 +253,6 @@ class _bodyState extends State<body> {
               padding: EdgeInsets.all(20),
               child: ElevatedButton(
                 onPressed: () {
-                  whatsapp();
                   // Implementasi logika tombol simpan
                 },
                 child: Text('Simpan perubahan'),

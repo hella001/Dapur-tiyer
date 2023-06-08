@@ -20,7 +20,7 @@ class AllMenu extends StatelessWidget {
             Wrap(
               alignment: WrapAlignment.start,
               direction: Axis.horizontal,
-              spacing: 5,
+              spacing: 25,
               runSpacing: 15,
               children: [
                 ...List.generate(
