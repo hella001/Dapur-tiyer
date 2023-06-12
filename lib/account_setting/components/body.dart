@@ -69,6 +69,8 @@ class _bodyState extends State<body> {
               backgroundColor: Colors.grey,
               valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
             ),*/
+
+            //menampilkan foto profil
             Padding(
               padding: EdgeInsets.symmetric(vertical: 15),
               child: Stack(

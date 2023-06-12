@@ -29,14 +29,17 @@ class _SignFormState extends State<SignForm> {
   TextEditingController emailController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
 
-  setdata() async {
+  setdata(int id) async {
     SharedPreferences statusLogin = await SharedPreferences.getInstance();
     statusLogin.setInt('status', 1);
+    statusLogin.setInt('membersId', id);
   }
 
   Future<void> login(String email, password) async {
     try {
-      final url = "http://perusnia.tk/api/login.php?api_key=fasih123";
+      //final url = "http://perusnia.tk/api/login.php?api_key=fasih123";
+      final url = "http://10.0.2.2:8000/api/login_member";
+      // final url = "https://kuropo.my.id/public/api/login_member";
 
       var requestBody = {
         'email': email,
@@ -47,8 +50,8 @@ class _SignFormState extends State<SignForm> {
           await http.post(Uri.parse(url), body: requestBody);
 
       var data = jsonDecode(response.body);
-      if (data["error"] == false) {
-        setdata();
+      if (data["status"] == 200) {
+        setdata(data["user_id"]['id']);
         Navigator.pushNamed(context, LoginSuccessScreen.routeName);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -92,8 +95,8 @@ class _SignFormState extends State<SignForm> {
           DefaultButton(
             text: "Masuk",
             press: () {
-              Navigator.pushNamed(context, LoginSuccessScreen.routeName);
-              //login(emailController.text, passwordController.text);
+              // Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+              login(emailController.text, passwordController.text);
             },
           )
         ],

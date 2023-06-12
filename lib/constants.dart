@@ -33,6 +33,8 @@ const String kMatchPassError = "Kata sandi tidak cocok";
 const String kNamelNullError = "Harap masukkan nama anda";
 const String kPhoneNumberNullError = "Harap masukkan nomor telepon";
 const String kAddressNullError = "Harap masukkan alamat anda";
+const String kNameNullError = "Harap masukkan nama anda";
+const String kPhoneNullError = "Harap masukkan nomor telepon anda";
 
 final otpInputDecoration = InputDecoration(
   contentPadding:

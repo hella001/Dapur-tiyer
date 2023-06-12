@@ -1,48 +1,65 @@
 class loginData {
-  bool? error;
+  int? status;
   String? message;
-  User? user;
+  UserId? userId;
 
-  loginData({this.error, this.message, this.user});
+  loginData({this.status, this.message, this.userId});
 
   loginData.fromJson(Map<String, dynamic> json) {
-    error = json['error'];
+    status = json['status'];
     message = json['message'];
-    user = json['user'] != null ? new User.fromJson(json['user']) : null;
+    userId =
+        json['user_id'] != null ? new UserId.fromJson(json['user_id']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['error'] = this.error;
+    data['status'] = this.status;
     data['message'] = this.message;
-    if (this.user != null) {
-      data['user'] = this.user!.toJson();
+    if (this.userId != null) {
+      data['user_id'] = this.userId!.toJson();
     }
     return data;
   }
 }
 
-class User {
-  String? idUsers;
-  String? username;
+class UserId {
+  int? id;
+  String? namaMember;
+  String? noHp;
   String? email;
   String? password;
+  String? createdAt;
+  String? updatedAt;
 
-  User({this.idUsers, this.username, this.email, this.password});
+  UserId(
+      {this.id,
+      this.namaMember,
+      this.noHp,
+      this.email,
+      this.password,
+      this.createdAt,
+      this.updatedAt});
 
-  User.fromJson(Map<String, dynamic> json) {
-    idUsers = json['id_users'];
-    username = json['username'];
+  UserId.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    namaMember = json['nama_member'];
+    noHp = json['no_hp'];
     email = json['email'];
     password = json['password'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id_users'] = this.idUsers;
-    data['username'] = this.username;
+    data['id'] = this.id;
+    data['nama_member'] = this.namaMember;
+    data['no_hp'] = this.noHp;
     data['email'] = this.email;
     data['password'] = this.password;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
     return data;
   }
 }

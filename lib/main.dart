@@ -8,18 +8,25 @@ import 'package:shop/screens/splash/splash_screen.dart';
 import 'package:shop/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+
+  runApp(MyApp(
+    status: prefs.getInt('status'),
+  ));
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class MyApp extends StatefulWidget {
+  final int? status;
+  MyApp({Key? key, required this.status});
 
-  Future<int?> cekStatus() async {
-    SharedPreferences status = await SharedPreferences.getInstance();
-    print(status.getInt('status'));
-    return status.getInt('status');
-  }
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  // This widget is the root of your application.
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +36,8 @@ class MyApp extends StatelessWidget {
       theme: theme(),
       // home: SplashScreen(),
       // We use routeName so that we dont need to remember the name
-      initialRoute: SplashScreen.routeName,
+      initialRoute:
+          widget.status == 1 ? HomeScreen.routeName : SplashScreen.routeName,
       routes: routes,
     );
   }

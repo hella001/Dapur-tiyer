@@ -5,9 +5,11 @@ import 'package:shop/constants.dart';
 import '../../../size_config.dart';
 
 class CustomAppBar extends StatelessWidget {
-  final double rating;
+  // final double rating;
 
-  CustomAppBar({required this.rating});
+  CustomAppBar(
+      // {required this.rating}
+      );
 
   @override
   // AppBar().preferredSize.height provide us the height that appy on our app bar
@@ -16,7 +18,7 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Padding(
+      child: Container(
         padding:
             EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
         child: Row(
@@ -41,26 +43,26 @@ class CustomAppBar extends StatelessWidget {
               ),
             ),
             Spacer(),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(14),
-              ),
-              child: Row(
-                children: [
-                  Text(
-                    "$rating",
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const SizedBox(width: 5),
-                  SvgPicture.asset("assets/icons/Star Icon.svg"),
-                ],
-              ),
-            )
+            // Container(
+            //   padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
+            //   decoration: BoxDecoration(
+            //     color: Colors.white,
+            //     borderRadius: BorderRadius.circular(14),
+            //   ),
+            //   child: Row(
+            //     children: [
+            //       Text(
+            //         "$rating",
+            //         style: const TextStyle(
+            //           fontSize: 14,
+            //           fontWeight: FontWeight.w600,
+            //         ),
+            //       ),
+            //       const SizedBox(width: 5),
+            //       SvgPicture.asset("assets/icons/Star Icon.svg"),
+            //     ],
+            //   ),
+            // )
           ],
         ),
       ),

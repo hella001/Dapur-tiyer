@@ -11,11 +11,19 @@ class ProductCard extends StatelessWidget {
     Key? key,
     this.width = 140,
     this.aspectRetio = 1.02,
-    required this.product,
+    required this.id,
+    required this.gambar,
+    required this.nama_barang,
+    required this.harga,
+    required this.deskripsi,
   }) : super(key: key);
 
   final double width, aspectRetio;
-  final Product product;
+  final String id;
+  final String gambar;
+  final String nama_barang;
+  final int harga;
+  final String deskripsi;
 
   @override
   Widget build(BuildContext context) {
@@ -27,31 +35,39 @@ class ProductCard extends StatelessWidget {
           onTap: () => Navigator.pushNamed(
             context,
             DetailsScreen.routeName,
-            arguments: ProductDetailsArguments(product: product),
+            arguments: ProductDetailsArguments(
+                id: id.toString(),
+                image: gambar.toString(),
+                title: nama_barang.toString(),
+                deskripsi: deskripsi.toString(),
+                harga: harga),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AspectRatio(
-                aspectRatio: 1.02,
-                child: Container(
-                  clipBehavior: Clip.hardEdge,
-                  decoration: BoxDecoration(
-                    color: kSecondaryColor.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Hero(
-                    tag: product.id.toString(),
-                    child: Image.asset(
-                      product.images[0],
-                      fit: BoxFit.cover,
+              Container(
+                height: 380,
+                child: AspectRatio(
+                  aspectRatio: 1.02,
+                  child: Container(
+                    clipBehavior: Clip.hardEdge,
+                    decoration: BoxDecoration(
+                      color: kSecondaryColor.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Hero(
+                      tag: id,
+                      child: Image.network(
+                        'http://10.0.2.2:8000/api/files/${gambar}',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
               ),
               const SizedBox(height: 10),
               Text(
-                product.title,
+                nama_barang,
                 style: TextStyle(color: Colors.black),
                 maxLines: 2,
               ),
@@ -59,34 +75,34 @@ class ProductCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "\Rp.${product.price}",
+                    "\Rp.${harga}",
                     style: TextStyle(
                       fontSize: getProportionateScreenWidth(18),
                       fontWeight: FontWeight.w600,
                       color: kPrimaryColor,
                     ),
                   ),
-                  InkWell(
-                    borderRadius: BorderRadius.circular(50),
-                    onTap: () {},
-                    child: Container(
-                      padding: EdgeInsets.all(getProportionateScreenWidth(8)),
-                      height: getProportionateScreenWidth(28),
-                      width: getProportionateScreenWidth(28),
-                      decoration: BoxDecoration(
-                        color: product.isFavourite
-                            ? kPrimaryColor.withOpacity(0.15)
-                            : kSecondaryColor.withOpacity(0.1),
-                        shape: BoxShape.circle,
-                      ),
-                      child: SvgPicture.asset(
-                        "assets/icons/Heart Icon_2.svg",
-                        color: product.isFavourite
-                            ? Color(0xFFFF4848)
-                            : Color(0xFFDBDEE4),
-                      ),
-                    ),
-                  ),
+                  // InkWell(
+                  //   borderRadius: BorderRadius.circular(50),
+                  //   onTap: () {},
+                  //   child: Container(
+                  //     padding: EdgeInsets.all(getProportionateScreenWidth(8)),
+                  //     height: getProportionateScreenWidth(28),
+                  //     width: getProportionateScreenWidth(28),
+                  //     decoration: BoxDecoration(
+                  //       color: product.isFavourite
+                  //           ? kPrimaryColor.withOpacity(0.15)
+                  //           : kSecondaryColor.withOpacity(0.1),
+                  //       shape: BoxShape.circle,
+                  //     ),
+                  //     child: SvgPicture.asset(
+                  //       "assets/icons/Heart Icon_2.svg",
+                  //       color: product.isFavourite
+                  //           ? Color(0xFFFF4848)
+                  //           : Color(0xFFDBDEE4),
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               )
             ],

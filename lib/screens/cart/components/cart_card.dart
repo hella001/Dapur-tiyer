@@ -1,17 +1,30 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:shop/models/Cart.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
-class CartCard extends StatelessWidget {
+class CartCard extends StatefulWidget {
   const CartCard({
     Key? key,
-    required this.cart,
+    required this.images,
+    required this.nama_produk,
+    required this.harga,
+    required this.jumlah,
   }) : super(key: key);
 
-  final Cart cart;
+  final String images;
+  final String nama_produk;
+  final double harga;
+  final int jumlah;
 
+  @override
+  State<CartCard> createState() => _CartCardState();
+}
+
+class _CartCardState extends State<CartCard> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -21,12 +34,15 @@ class CartCard extends StatelessWidget {
           child: AspectRatio(
             aspectRatio: 0.88,
             child: Container(
-              padding: EdgeInsets.all(getProportionateScreenWidth(10)),
+              clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(
                 color: Color(0xFFF5F6F9),
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Image.asset(cart.product.images[0]),
+              child: Image.network(
+                'http://10.0.2.2:8000/api/files/${widget.images}',
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ),
@@ -35,19 +51,19 @@ class CartCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              cart.product.title,
+              widget.nama_produk,
               style: TextStyle(color: Colors.black, fontSize: 16),
               maxLines: 2,
             ),
             SizedBox(height: 10),
             Text.rich(
               TextSpan(
-                text: "\Rp.${cart.product.price}",
+                text: "\Rp.${widget.harga}",
                 style: TextStyle(
                     fontWeight: FontWeight.w600, color: kPrimaryColor),
                 children: [
                   TextSpan(
-                      text: " x${cart.numOfItem}",
+                      text: " x${widget.jumlah}",
                       style: Theme.of(context).textTheme.bodyText1),
                 ],
               ),

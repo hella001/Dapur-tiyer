@@ -11,6 +11,7 @@ class Body extends StatelessWidget {
   void removePrefs() async {
     SharedPreferences status = await SharedPreferences.getInstance();
     status.remove('status');
+    status.remove('membersId');
     print(status.getInt('status'));
   }
 
@@ -20,7 +21,7 @@ class Body extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 20),
       child: Column(
         children: [
-          ProfilePic(),
+          //ProfilePic(),
           SizedBox(height: 20),
           ProfileMenu(
             text: "Akunku",
