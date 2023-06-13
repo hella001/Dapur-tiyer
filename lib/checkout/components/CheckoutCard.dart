@@ -10,6 +10,7 @@ import 'package:shop/models/Cart.dart';
 //import 'package:shop/checkout/checkout_screen.dart';
 import 'package:http/http.dart' as http;
 import 'package:shop/screens/home/home_screen.dart';
+//import 'package:shop/screens/home/home_screen.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -118,20 +119,19 @@ class _CheckoutCardState extends State<CheckoutCard> {
                       SizedBox(
                         width: getProportionateScreenWidth(190),
                         child: DefaultButton(
-                          text: "Bayar",
+                          text: "Buat pesanan",
                           press: () {
-                            /*const snackdemo = SnackBar(
-                              content: Text('Pembayaran berhasil'),
+                            const snackdemo = SnackBar(
+                              content: Text('Pesanan berhasil dibuat'),
                               backgroundColor: Colors.green,
                               elevation: 10,
                               behavior: SnackBarBehavior.floating,
                               margin: EdgeInsets.all(5),
-                            );*/
-                            Navigator.pushNamed(
-                                context, checkoutScreen.routeName);
-                            ScaffoldMessenger.of(context);
-                            //#Perubahan
-                            // .showSnackBar(snackdemo);
+                            );
+                            Navigator.pushNamed(context, HomeScreen.routeName);
+                            ScaffoldMessenger.of(context)
+                                //#Perubahan
+                                .showSnackBar(snackdemo);
 
                             // 'showSnackBar' is deprecated and shouldn't be used.
                             //Use ScaffoldMessenger.showSnackBar.

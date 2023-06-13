@@ -16,6 +16,7 @@ import 'package:shop/account_setting/account_setting_screen.dart';
 import 'package:shop/service_center/service_center_screen.dart';
 import 'package:shop/all_menu/menu_screen.dart';
 import 'screens/sign_up/sign_up_screen.dart';
+import 'checkout/checkout_screen.dart';
 
 // We use name route
 // All our routes will be available here
@@ -34,4 +35,5 @@ final Map<String, WidgetBuilder> routes = {
   AccountSetting.routeName: (context) => AccountSetting(),
   ServiceCenter.routeName: (context) => ServiceCenter(),
   MenuScreen.routeName: (context) => MenuScreen(),
+  checkoutScreen.routeName: (context) => checkoutScreen(),
 };
