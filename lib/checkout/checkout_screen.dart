@@ -11,7 +11,7 @@ class checkoutScreen extends StatelessWidget {
     return Scaffold(
       appBar: buildAppBar(context),
       body: body(),
-      bottomNavigationBar: CheckoutCard(),
+      // bottomNavigationBar: CheckoutCard(),
     );
   }
 

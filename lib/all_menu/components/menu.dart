@@ -14,7 +14,8 @@ class AllMenu extends StatefulWidget {
 
 class _AllMenuState extends State<AllMenu> {
   Future<List<Product>> getProduct() async {
-    Uri url = Uri.parse('http://10.0.2.2:8000/api/products');
+    // Uri url = Uri.parse('http://10.0.2.2:8000/api/products');
+    Uri url = Uri.parse('http://kuropo.my.id/api/products');
     final response = await http.get(url);
 
     if (response.statusCode == 200) {

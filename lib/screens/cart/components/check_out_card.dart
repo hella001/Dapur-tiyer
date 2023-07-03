@@ -27,7 +27,8 @@ class _CheckoutCardState extends State<CheckoutCard> {
   Future<List<CartsModel>> getCarts() async {
     SharedPreferences statusLogin = await SharedPreferences.getInstance();
     Uri url = Uri.parse(
-        'http://10.0.2.2:8000/api/carts/${statusLogin.getInt('membersId')}');
+        // 'http://10.0.2.2:8000/api/carts/${statusLogin.getInt('membersId')}');
+        'http://kuropo.my.id/api/carts/${statusLogin.getInt('membersId')}');
 
     final response = await http.get(url);
 

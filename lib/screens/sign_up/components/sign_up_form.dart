@@ -48,7 +48,8 @@ class _SignUpFormState extends State<SignUpForm> {
 
   Future<void> signup(String nama, phone, email, password, conpass) async {
     try {
-      final url = "http://10.0.2.2:8000/api/auth/register";
+      // final url = "http://10.0.2.2:8000/api/auth/register";
+      final url = "http://kuropo.my.id/api/auth/register";
 
       var requestBody = {
         'nama_member': nama,

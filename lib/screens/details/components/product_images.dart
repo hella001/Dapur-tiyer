@@ -31,7 +31,8 @@ class _ProductImagesState extends State<ProductImages> {
             child: Hero(
               tag: widget.id.toString(),
               child: Image.network(
-                'http://10.0.2.2:8000/api/files/${widget.image}',
+                // 'http://10.0.2.2:8000/api/files/${widget.image}',
+                'http://kuropo.my.id/api/files/${widget.image}',
                 fit: BoxFit.cover,
               ),
             ),

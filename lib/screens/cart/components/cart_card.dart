@@ -40,7 +40,8 @@ class _CartCardState extends State<CartCard> {
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Image.network(
-                'http://10.0.2.2:8000/api/files/${widget.images}',
+                // 'http://10.0.2.2:8000/api/files/${widget.images}',
+                'http://kuropo.my.id/api/files/${widget.images}',
                 fit: BoxFit.cover,
               ),
             ),

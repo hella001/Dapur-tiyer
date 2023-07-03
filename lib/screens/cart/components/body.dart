@@ -21,7 +21,8 @@ class _BodyState extends State<Body> {
     SharedPreferences statusLogin = await SharedPreferences.getInstance();
 
     Uri url = Uri.parse(
-        'http://10.0.2.2:8000/api/carts/${statusLogin.getInt('membersId')}');
+        // 'http://10.0.2.2:8000/api/carts/${statusLogin.getInt('membersId')}');
+        'http://kuropo.my.id/api/carts/${statusLogin.getInt('membersId')}');
 
     final response = await http.get(url);
 
@@ -34,13 +35,15 @@ class _BodyState extends State<Body> {
     }
   }
 
-  Future<void> deleteCard(int? id) async {
+  Future<void> deleteCard(String id) async {
+    var cardid = id;
     try {
-      final url = "http://10.0.2.2:8000/api/carts/delete/${id}";
-
-      http.Response response = await http.get(Uri.parse(url));
+      http.Response response = await http
+          // .get(Uri.parse('http://10.0.2.2:8000/api/carts/delete/$cardid'));
+          .get(Uri.parse('http://kuropo.my.id/api/carts/delete/$cardid'));
 
       var data = jsonDecode(response.body);
+      print("CartID: $cardid Status: " + data["status"].toString());
       if (data["status"] == 200) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -79,7 +82,10 @@ class _BodyState extends State<Body> {
                   key: Key(data![index].cartsId.toString()),
                   direction: DismissDirection.endToStart,
                   onDismissed: (direction) {
-                    deleteCard(data![index].cartsId!.toInt());
+                    if (direction == DismissDirection.endToStart) {
+                      deleteCard(data[index].cartsId.toString());
+                    }
+
                     // print(data![index].cartsId!.toInt());
                   },
                   background: Container(

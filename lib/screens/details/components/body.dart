@@ -39,7 +39,8 @@ class _BodyState extends State<Body> {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       final int? membersId = prefs.getInt('membersId');
-      final url = "http://10.0.2.2:8000/api/carts";
+      // final url = "http://10.0.2.2:8000/api/carts";
+      final url = "http://kuropo.my.id/api/carts";
 
       var requestBody = {
         'id_member': membersId.toString(),

@@ -70,11 +70,11 @@ class ProductDescription extends StatelessWidget {
             onTap: () {},
             child: Row(
               children: [
-                Text(
+                /*Text(
                   "Lihat detail",
                   style: TextStyle(
                       fontWeight: FontWeight.w600, color: kPrimaryColor),
-                ),
+                ),*/
                 SizedBox(width: 5),
                 Icon(
                   Icons.arrow_forward_ios,

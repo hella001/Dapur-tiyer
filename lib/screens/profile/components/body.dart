@@ -23,12 +23,12 @@ class Body extends StatelessWidget {
         children: [
           //ProfilePic(),
           SizedBox(height: 20),
-          ProfileMenu(
+          /*ProfileMenu(
             text: "Akunku",
             icon: "assets/icons/User Icon.svg",
             press: () =>
                 {Navigator.pushNamed(context, AccountSetting.routeName)},
-          ),
+          ),*/
           /*ProfileMenu(
             text: "Notifikasi",
             icon: "assets/icons/Bell.svg",

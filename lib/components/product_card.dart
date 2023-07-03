@@ -58,7 +58,8 @@ class ProductCard extends StatelessWidget {
                     child: Hero(
                       tag: id,
                       child: Image.network(
-                        'http://10.0.2.2:8000/api/files/${gambar}',
+                        // 'http://10.0.2.2:8000/api/files/${gambar}',
+                        'http://kuropo.my.id/api/files/${gambar}',
                         fit: BoxFit.cover,
                       ),
                     ),
